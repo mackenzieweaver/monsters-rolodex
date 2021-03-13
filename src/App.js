@@ -19,7 +19,7 @@ class App extends Component {
       .then((users) => this.setState({ monsters: users }));
   }
 
-  // es6 syntax automatically binds the 'this' context to the same as what calls handlechange
+  // es6 arrow syntax allows 'this' to automatically be bound to the same context as what calls handlechange
   handleChange = (e) => {
 	this.setState({searchField: e.target.value});
   }
@@ -30,6 +30,7 @@ class App extends Component {
 
     return (
       <div className="App">
+		<h1>Monsters Rolodex</h1>
 		<SearchBox handleChange={this.handleChange} placeholder="search monsters" />
         <CardList monsters={filteredMonsters} />
       </div>
