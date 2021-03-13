@@ -19,13 +19,18 @@ class App extends Component {
       .then((users) => this.setState({ monsters: users }));
   }
 
+  // es6 syntax automatically binds the 'this' context to the same as what calls handlechange
+  handleChange = (e) => {
+	this.setState({searchField: e.target.value});
+  }
+
   render() {
 	const { monsters, searchField } = this.state;
 	const filteredMonsters = monsters.filter(monster => monster.name.toLowerCase().includes(searchField.toLowerCase()));
 
     return (
       <div className="App">
-		<SearchBox handleChange={e => this.setState({searchField: e.target.value})} placeholder="search monsters" />
+		<SearchBox handleChange={this.handleChange} placeholder="search monsters" />
         <CardList monsters={filteredMonsters} />
       </div>
     );
